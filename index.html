@@ -3,28 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSP Sulejów Podklasztorze</title>
+    <title>OSP Podklasztorze</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Phosphor Icons -->
+    <!-- Phosphor Icons CDN (używane w pasku góry i nawigacji) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo_1_1.png" type="image/x-icon">
+    <!-- Font Awesome CDN (dla ikon użytkowników/zarządu) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
                     colors: {
                         fire: {
-                            50: '#fff1f2',
-                            100: '#ffe4e6',
-                            500: '#ef4444',
                             600: '#dc2626',
                             700: '#b91c1c',
                             800: '#991b1b',
@@ -35,15 +27,17 @@
             }
         }
     </script>
+    <link rel="icon" href="logo_1_1.png" type="image/x-icon">
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-fire-600 selection:text-white">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <!-- Pasek numeru alarmowego -->
-    <div class="bg-fire-700 text-white py-2 px-4 text-xs sm:text-sm font-semibold tracking-wide">
+    <!-- PASEK ALARMOWY -->
+    <div class="bg-fire-700 text-white py-2 px-4 text-xs sm:text-sm font-semibold tracking-wide sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <span class="inline-block w-2 h-2 rounded-full bg-white animate-ping"></span>
-                <span>W RAZIE ZAGROŻENIA DZWOŃ POD NUMER ALARMOWY!</span>
+                <span class="hidden sm:inline">W RAZIE ZAGROŻENIA DZWOŃ POD NUMER ALARMOWY!</span>
+                <span class="sm:hidden">NUMERY ALARMOWE:</span>
             </div>
             <div class="flex items-center gap-4">
                 <a href="tel:112" class="hover:underline flex items-center gap-1">
@@ -57,246 +51,292 @@
         </div>
     </div>
 
-    <!-- Nawigacja -->
-    <nav class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            
-            <!-- Logo + Nazwa -->
+    <!-- NAWIGACJA & LOGO -->
+    <header class="bg-white border-b border-gray-200 sticky top-[36px] z-40 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 group">
-                <!-- Podmień 'logo.png' na ścieżkę do swojego pliku logotypu -->
-                <div class="w-12 h-12 rounded-lg bg-slate-800 border border-slate-700 p-1 flex items-center justify-center overflow-hidden group-hover:border-fire-600 transition">
-                    <img src="logo.png" alt="Logo OSP Sulejów Podklasztorze" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/b91c1c/ffffff?text=OSP';">
-                </div>
+                <!-- Herb / Logotyp -->
+                <img src="/logo.png" alt="Herb OSP Podklasztorze" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
                 <div>
-                    <span class="block text-xs uppercase tracking-wider text-slate-400 font-bold">Ochotnicza Straż Pożarna</span>
-                    <span class="block font-extrabold text-base sm:text-lg text-white group-hover:text-fire-500 transition">Sulejów Podklasztorze</span>
+                    <span class="block text-xl font-black tracking-tight text-gray-900 group-hover:text-fire-700 transition-colors">OSP Podklasztorze</span>
+                    <span class="block text-xs text-gray-500 font-medium">Ochotnicza Straż Pożarna Sulejów Podklasztorze</span>
                 </div>
             </a>
-
-            <!-- Menu desktop -->
-            <div class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-300">
-                <a href="#o-nas" class="hover:text-fire-500 transition">O nas</a>
-                <a href="#wyposazenie" class="hover:text-fire-500 transition">Wyposażenie</a>
-                <a href="#wsparcie" class="hover:text-fire-500 transition">Wspieraj nas</a>
-                <a href="#kontakt" class="hover:text-fire-500 transition">Kontakt</a>
-                <a href="#kontakt" class="bg-fire-600 hover:bg-fire-700 text-white px-4 py-2 rounded-lg font-bold shadow-lg shadow-fire-600/30 transition">
-                    Dołącz do nas
-                </a>
-            </div>
-
-        </div>
-    </nav>
-
-    <!-- Sekcja Hero -->
-    <header class="relative min-h-[85vh] flex items-center justify-center bg-slate-900 overflow-hidden">
-        <!-- Tło z nakładką -->
-        <div class="absolute inset-0 bg-[url('https://osp.podklasztorze.pl/IMG_2490.png')] bg-cover bg-center"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-900/60"></div>
-
-        <div class="relative max-w-4xl mx-auto px-4 text-center py-20">
-            <span class="inline-flex items-center gap-2 bg-fire-600/20 text-fire-400 border border-fire-600/40 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold uppercase tracking-wider mb-6">
-                <i class="ph-bold ph-shield-check"></i> W służbie lokalnej społeczności
-            </span>
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-                Bogu na chwałę,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-fire-500 to-amber-500">ludziom na pożytek.</span>
-            </h1>
-            <p class="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Ochotnicza Straż Pożarna Sulejów Podklasztorze to jednostka pełna pasji, zaangażowania i gotowości do niesienia pomocy o każdej porze dnia i nocy.
-            </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#kontakt" class="w-full sm:w-auto bg-fire-600 hover:bg-fire-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-xl shadow-fire-600/30 transition flex items-center justify-center gap-2">
-                    <i class="ph-bold ph-user-plus text-lg"></i> Zostań Strażakiem
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-sm text-gray-700">
+                <a href="#o-nas" class="hover:text-fire-700 transition-colors">O nas</a>
+                <a href="#wyposazenie" class="hover:text-fire-700 transition-colors">Wyposażenie</a>
+                <a href="#wladze" class="hover:text-fire-700 transition-colors">Władze</a>
+                <a href="#wspieraj" class="bg-fire-700 text-white px-4 py-2 rounded-lg hover:bg-fire-800 transition-colors flex items-center gap-2">
+                    <i class="ph-bold ph-heart"></i> Wspieraj nas
                 </a>
-                <a href="#o-nas" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold px-8 py-3.5 rounded-xl transition flex items-center justify-center gap-2">
-                    Dowiedz się więcej <i class="ph-bold ph-arrow-down"></i>
-                </a>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <!-- Sekcja Statystyk / Szybkich faktów -->
-    <section class="border-y border-slate-800 bg-slate-900/50 py-10">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <span class="block text-3xl sm:text-4xl font-extrabold text-fire-500 mb-1">24/7</span>
-                <span class="text-xs sm:text-sm text-slate-400 font-semibold uppercase tracking-wider">Gotowość bojowa</span>
-            </div>
-            <div>
-                <span class="block text-3xl sm:text-4xl font-extrabold text-fire-500 mb-1">100%</span>
-                <span class="text-xs sm:text-sm text-slate-400 font-semibold uppercase tracking-wider">Zaangażowania</span>
-            </div>
-            <div>
-                <span class="block text-3xl sm:text-4xl font-extrabold text-fire-500 mb-1">OSP</span>
-                <span class="text-xs sm:text-sm text-slate-400 font-semibold uppercase tracking-wider">Podklasztorze</span>
-            </div>
-            <div>
-                <span class="block text-3xl sm:text-4xl font-extrabold text-fire-500 mb-1">Sulejów</span>
-                <span class="text-xs sm:text-sm text-slate-400 font-semibold uppercase tracking-wider">Lokalna Straż</span>
+    <!-- BANER GŁÓWNY (HERO) -->
+    <section class="relative bg-gray-900 text-white py-20 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-30 bg-cover bg-center" style="background-image: url('/woz.jpg'); background-position: center 60%;"></div>
+        <div class="relative max-w-6xl mx-auto text-center space-y-6">
+            <span class="bg-fire-700 text-xs uppercase font-bold tracking-widest px-3 py-1 rounded-full">Bogu na chwałę, ludziom na pożytek</span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">Ochotnicza Straż Pożarna<br><span class="text-fire-600">Sulejów Podklasztorze</span></h1>
+            <p class="max-w-2xl mx-auto text-gray-300 text-lg">Czuwamy nad bezpieczeństwem naszej lokalnej społeczności. Jesteśmy zawsze gotowi do akcji, by nieść pomoc tam, gdzie jest najbardziej potrzebna.</p>
+            <div class="flex justify-center gap-4 pt-4">
+                <a href="#o-nas" class="bg-white text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">Poznaj nas</a>
+                <a href="#wspieraj" class="bg-fire-700 text-white font-bold px-6 py-3 rounded-lg hover:bg-fire-800 transition-colors">Przekaż 1,5%</a>
             </div>
         </div>
     </section>
 
-    <!-- Sekcja O nas -->
-    <section id="o-nas" class="py-20 max-w-6xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-fire-500 text-sm font-bold uppercase tracking-wider block mb-2">O naszej jednostce</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white mb-6">Tradycja, poświęcenie i nowoczesne ratownictwo</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">
-                    <strong>Ochotnicza Straż Pożarna Sulejów Podklasztorze</strong> to stowarzyszenie łączące pokolenia mieszkańców Podklasztorza. Naszą misją jest nie tylko ochrona życia, zdrowia i mienia przed pożarami oraz klęskami żywiołowymi, ale również aktywne wspieranie lokalnej społeczności.
-                </p>
-                <p class="text-slate-400 leading-relaxed mb-6">
-                    Nasi druhowie nieustannie podnoszą swoje kwalifikacje podczas szkoleń ratowniczych, medycznych i technicznych, aby w trudnych momentach działać szybko i skutecznie.
-                </p>
-                
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3 text-slate-200">
-                        <i class="ph-bold ph-check-circle text-fire-500 text-xl"></i>
-                        <span>Ratownictwo gasięce i techniczne</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-slate-200">
-                        <i class="ph-bold ph-check-circle text-fire-500 text-xl"></i>
-                        <span>Zabezpieczenie wydarzeń lokalnych</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-slate-200">
-                        <i class="ph-bold ph-check-circle text-fire-500 text-xl"></i>
-                        <span>Edukacja z zakresu pierwszej pomocy i ppoż.</span>
+    <main class="max-w-6xl mx-auto px-4 py-12 space-y-20">
+
+        <!-- SEKCTA: O NAS -->
+        <section id="o-nas" class="scroll-mt-24">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-4">
+                    <span class="text-fire-700 font-bold uppercase tracking-wider text-sm">Poznaj naszą jednostkę</span>
+                    <h2 class="text-3xl font-extrabold text-gray-900">Służba, pasja i tradycja w OSP Podklasztorze</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nasza jednostka zrzesza druhów i druhny, którzy bezinteresownie poświęcają swój czas, by chronić życie, zdrowie i mienie mieszkańców. Bierzemy udział w akcjach gaśniczych, ratownictwie drogowym oraz usuwaniu skutków klęsk żywiołowych.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="border-l-4 border-fire-700 pl-4">
+                            <span class="block text-2xl font-black text-gray-900">24/7</span>
+                            <span class="text-sm text-gray-500">Gotowość bojowa</span>
+                        </div>
+                        <div class="border-l-4 border-fire-700 pl-4">
+                            <span class="block text-2xl font-black text-gray-900">100%</span>
+                            <span class="text-sm text-gray-500">Zaangażowania</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Karta ze zdjęciem / grafiką -->
-            <div class="relative">
-                <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-fire-600 to-amber-600 opacity-30 blur-lg"></div>
-                <div class="relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden p-2">
-                    <img src="https://osp.podklasztorze.pl/woz.jpg" alt="Strażacy w akcji" class="w-full h-80 object-cover rounded-xl mb-4">
-                    <div class="p-4 text-center">
-                        <p class="text-sm text-slate-300 italic font-medium">"Zawsze gotowi, by nieść pomoc mieszkańcom Podklasztorza i okolic."</p>
-                    </div>
+                <div class="rounded-2xl overflow-hidden shadow-md max-h-96">
+                    <img 
+                        src="/IMG_2490.png" 
+                        alt="Strażacy Ochotniczej Straży Pożarnej Sulejów Podklasztorze oddający honor bohaterom 1 sierpnia 1944 r." 
+                        class="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
+                    >
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sekcja Wyposażenie -->
-    <section id="wyposazenie" class="py-20 bg-slate-900/60 border-y border-slate-800">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-fire-500 text-sm font-bold uppercase tracking-wider block mb-2">Sprzęt & Flota</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">W czym niesiemy pomoc</h2>
-                <p class="text-slate-400">Sprzęt wysokiej jakości to bezpieczeństwo strażaków i wysoka skuteczność prowadzonych działań.</p>
+        <!-- SEKCJA: WYPOSAŻENIE -->
+        <section id="wyposazenie" class="scroll-mt-24">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900">Sprzęt i Wyposażenie</h2>
+                <p class="text-gray-600 mt-2">Nasz sprzęt pozwala nam skutecznie reagować w sytuacjach zagrożenia.</p>
             </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Karta 1 -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-fire-600/50 transition group">
-                    <div class="w-12 h-12 bg-fire-600/10 text-fire-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-lg flex items-center justify-center text-2xl mb-4">
                         <i class="ph-bold ph-truck"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Wozy Pożarnicze</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Pojazdy ratowniczo-gaśnicze wyposażone w zbiorniki na wodę, motopompy oraz sprzęt niezbędny do szybkiej reakcji.
-                    </p>
+                    <h3 class="text-xl font-bold mb-2">Wóz Bojowy</h3>
+                    <p class="text-gray-600 text-sm">Główny pojazd gaśniczy wyposażony w zbiornik na wodę, motopompy oraz sprzęt armatury wodnej.</p>
                 </div>
-
-                <!-- Karta 2 -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-fire-600/50 transition group">
-                    <div class="w-12 h-12 bg-fire-600/10 text-fire-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
-                        <i class="ph-bold ph-first-aid-kit"></i>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-lg flex items-center justify-center text-2xl mb-4">
+                        <i class="ph-bold ph-first-aid"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Ratownictwo Medyczne</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Zestawy pierwszej pomocy PSP R1, defibrylatory AED, nosze oraz tlenoterapia do udzielania kwalifikowanej pomocy przedmedycznej.
-                    </p>
+                    <h3 class="text-xl font-bold mb-2">Ratownictwo Medyczne</h3>
+                    <p class="text-gray-600 text-sm">Zestawy PSP R1, torby medyczne, nosze typu deska oraz defibrylator AED do udzielania KPP.</p>
                 </div>
-
-                <!-- Karta 3 -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-fire-600/50 transition group">
-                    <div class="w-12 h-12 bg-fire-600/10 text-fire-500 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-lg flex items-center justify-center text-2xl mb-4">
                         <i class="ph-bold ph-wrench"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Sprzęt Techniczny</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Narzędzia hydrauliczne, pilarki do drewna i betonu, pompy szlamowe oraz agregaty prądotwórcze do zadań specjalnych.
-                    </p>
+                    <h3 class="text-xl font-bold mb-2">Ratownictwo Techniczne</h3>
+                    <p class="text-gray-600 text-sm">Piły do drewna i betonu, wyciągarki oraz narzędzia do usuwania skutków nawałnic.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA: WŁADZE -->
+        <section id="wladze" class="scroll-mt-24 space-y-12">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-extrabold text-gray-900">Władze Jednostki</h2>
+                <p class="text-gray-600 mt-2">Struktura organizacyjna OSP Podklasztorze</p>
+            </div>
+
+            <!-- 1. WALNE ZEBRANIE -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 text-center max-w-3xl mx-auto shadow-sm">
+                <span class="text-xs font-bold text-fire-700 uppercase tracking-wider">Najwyższy Organ Uchwałodawczy</span>
+                <h3 class="text-xl font-bold mt-1 mb-2">Walne Zebranie Członków</h3>
+                <p class="text-gray-600 text-sm">
+                    Walne Zebranie Członków jest najwyższą władzą OSP. Podejmuje kluczowe decyzje dotyczące działalności, uchwala budżet, przyjmuje sprawozdania oraz wybiera Zarząd i Komisję Rewizyjną.
+                </p>
+            </div>
+
+            <!-- 2. ZARZĄD OSP (7 OSOB w siatce) -->
+            <div>
+                <div class="flex items-center gap-3 mb-6 border-b pb-2">
+                    <i class="fa-solid fa-users text-fire-700 text-xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Zarząd OSP</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Prezes -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Mariusz Bryk</h4>
+                            <p class="text-xs font-semibold text-gray-600">Prezes</p>
+                        </div>
+                    </div>
+                    <!-- Naczelnik -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Jakub Domański</h4>
+                            <p class="text-xs font-semibold text-gray-600">Naczelnik</p>
+                        </div>
+                    </div>
+                    <!-- Wiceprezes -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Łukasz Kędziora</h4>
+                            <p class="text-xs font-semibold text-gray-600">Wiceprezes</p>
+                        </div>
+                    </div>
+                    <!-- Wiceprezes -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Sławomir Nowak</h4>
+                            <p class="text-xs font-semibold text-gray-600">Wiceprezes</p>
+                        </div>
+                    </div>
+                    <!-- Z-ca Naczelnika -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Mateusz Kałuziński</h4>
+                            <p class="text-xs font-semibold text-gray-600">Z-ca Naczelnika</p>
+                        </div>
+                    </div>
+                    <!-- Skarbnik-sekretarz -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Dorian Zawadzki</h4>
+                            <p class="text-xs font-semibold text-gray-600">Skarbnik-sekretarz</p>
+                        </div>
+                    </div>
+                    <!-- Gospodarz -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-fire-700/10 text-fire-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Marek Misztal</h4>
+                            <p class="text-xs font-semibold text-gray-600">Gospodarz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. KOMISJA REWIZYJNA (3 OSOBY) -->
+            <div>
+                <div class="flex items-center gap-3 mb-6 border-b pb-2">
+                    <i class="fa-solid fa-clipboard-check text-fire-700 text-xl"></i>
+                    <h3 class="text-xl font-bold text-gray-900">Komisja Rewizyjna</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Przewodniczący -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-gray-100 text-gray-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Jan Bandos</h4>
+                            <p class="text-xs font-semibold text-gray-600">Przewodniczący</p>
+                        </div>
+                    </div>
+                    <!-- Sekretarz KR -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-gray-100 text-gray-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user-pen"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Zdzisław Bełdowski</h4>
+                            <p class="text-xs font-semibold text-gray-600">Sekretarz</p>
+                        </div>
+                    </div>
+                    <!-- Członek KR -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-fire-700/30 transition-colors">
+                        <div class="w-12 h-12 bg-gray-100 text-gray-700 rounded-full flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">dh. Tadeusz Firmowski</h4>
+                            <p class="text-xs font-semibold text-gray-600">Członek Komisji</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA: WSPIERAJ NAS (1,5% PODATKU) -->
+        <section id="wspieraj" class="bg-fire-700 text-white rounded-2xl p-8 sm:p-12 shadow-xl scroll-mt-24">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-2 space-y-4">
+                    <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Przekaż 1,5% Podatku</span>
+                    <h2 class="text-3xl font-black">Wspieraj OSP Podklasztorze!</h2>
+                    <p class="text-white/90 leading-relaxed">
+                        Twoje 1,5% podatku nic Cię nie kosztuje, a dla nas jest ogromnym wsparciem! Pozwala nam na zakup nowoczesnego sprzętu ratowniczego i środków ochrony osobistej dla naszych strażaków.
+                    </p>
+                    <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-white/20 space-y-2 text-sm">
+                        <p><strong>KRS:</strong> <span class="font-mono bg-white text-fire-800 px-2 py-0.5 rounded font-bold">0000184471</span></p>
+                        <p>Cel szczegółowy:</p>
+                        <p><span class="font-bold">OSP Sulejów Podklasztorze <br> ul. Władysława Jagiełły 26, 97-330 Sulejów</span></p>
+                    </div>
+                </div>
+                <div class="text-center bg-white text-gray-900 p-6 rounded-xl shadow-md">
+                    <i class="ph-bold ph-heartbeat text-5xl text-fire-700 mb-2"></i>
+                    <h3 class="font-bold text-lg mb-1">Dziękujemy za wsparcie!</h3>
+                    <p class="text-xs text-gray-500">Każda wpłata pomaga nam chronić Twoje bezpieczeństwo.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- STOPKA -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h4 class="text-white font-bold mb-4">OSP Podklasztorze</h4>
+                <p class="text-sm">Ochotnicza Straż Pożarna Sulejów Podklasztorze</p>
+                <p class="text-sm mt-2">Bogu na chwałę, ludziom na pożytek.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Kontakt</h4>
+                <p class="text-sm">Sulejów Podklasztorze</p>
+                <p class="text-sm">E-mail: kontakt@osp-podklasztorze.pl</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Social Media</h4>
+                <a href="#" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-fire-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                    <i class="ph-bold ph-facebook-logo"></i> Nasz Facebook
+                </a>
             </div>
         </div>
-    </section>
-
-    <!-- Sekcja Wsparcie / 1.5% -->
-    <section id="wsparcie" class="py-20 max-w-6xl mx-auto px-4">
-        <div class="bg-gradient-to-r from-fire-900/80 via-slate-900 to-slate-900 border border-fire-700/50 p-8 sm:p-12 rounded-3xl relative overflow-hidden">
-            <div class="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
-                <div class="lg:col-span-2">
-                    <span class="inline-block bg-fire-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Wspieraj OSP</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Przekaż 1,5% podatku na naszą jednostkę</h2>
-                    <p class="text-slate-300 leading-relaxed">
-                        Twój wkład finansowy pomaga nam w zakupie nowoczesnego sprzętu ochronnego, mundurów oraz wyposażenia wozów strażackich. Razem dbamy o bezpieczeństwo Podklasztorza i całego Sulejowa!
-                    </p>
-                </div>
-                <div class="bg-slate-950/80 border border-slate-800 p-6 rounded-2xl text-center">
-                    <p class="text-xs uppercase font-bold tracking-wider text-slate-400 mb-2">Numer KRS</p>
-                    <p class="text-2xl font-extrabold text-fire-500 mb-3 tracking-widest">0000184471</p>
-                    <p class="text-xs text-slate-400">Cel szczegółowy:<br><strong class="text-slate-200">OSP Sulejów Podklasztorze</strong></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sekcja Kontakt -->
-    <section id="kontakt" class="py-20 bg-slate-900/40 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-fire-500 text-sm font-bold uppercase tracking-wider block mb-2">Skontaktuj się</span>
-                <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">Kontakt & Remiza</h2>
-                <p class="text-slate-400">Masz pytania? Chcesz dołączyć do OSP Podklasztorze? Napisz lub odwiedź naszą strażnicę.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Adres -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center">
-                    <div class="w-12 h-12 bg-fire-600/10 text-fire-500 rounded-full flex items-center justify-center text-xl mx-auto mb-4">
-                        <i class="ph-bold ph-map-pin"></i>
-                    </div>
-                    <h3 class="font-bold text-white mb-1">Adres</h3>
-                    <p class="text-slate-400 text-sm">ul. Władysława Jagiełły 26<br>97-330 Sulejów</p>
-                </div>
-
-                <!-- Email / Telefon -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center">
-                    <div class="w-12 h-12 bg-fire-600/10 text-fire-500 rounded-full flex items-center justify-center text-xl mx-auto mb-4">
-                        <i class="ph-bold ph-envelope"></i>
-                    </div>
-                    <h3 class="font-bold text-white mb-1">Kontakt e-mail</h3>
-                    <p class="text-slate-400 text-sm">
-                        <a href="mailto:kontakt@osp-podklasztorze.pl" class="hover:text-fire-500 transition">osp_sulejow-podklasztorze@o2.pl</a>
-                    </p>
-                </div>
-
-                <!-- Social Media -->
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl text-center">
-                    <div class="w-12 h-12 bg-fire-600/10 text-fire-500 rounded-full flex items-center justify-center text-xl mx-auto mb-4">
-                        <i class="ph-bold ph-thumbs-up"></i>
-                    </div>
-                    <h3 class="font-bold text-white mb-1">Społeczność</h3>
-                    <p class="text-slate-400 text-sm mb-2">Śledź nasze aktualności na Facebooku</p>
-                    <a href="https://www.facebook.com/osp.sulejowpodklasztorze?locale=pl_PL" target="_blank" class="text-fire-500 font-semibold hover:underline text-sm inline-flex items-center gap-1">
-                        Profil Facebook <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stopka -->
-    <footer class="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026 Ochotnicza Straż Pożarna Sulejów Podklasztorze. Wszelkie prawa zastrzeżone.</p>
-            <p class="flex items-center gap-1">
-                Strona wykonana dla <span class="text-slate-300 font-semibold">OSP Podklasztorze</span> przez <span class="text-slate-300 font-semibold">Oliwier Stefaniak</span>
-            </p>
+        <div class="max-w-6xl mx-auto px-4 border-t border-gray-800 pt-6 text-center text-xs text-gray-600">
+            &copy; OSP Podklasztorze. Wszystkie prawa zastrzeżone.
         </div>
     </footer>
 
