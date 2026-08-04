@@ -123,12 +123,47 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-md max-h-96">
-                    <img 
-                        src="IMG_2490.png" 
-                        alt="Strażacy Ochotniczej Straży Pożarnej Sulejów Podklasztorze oddający honor bohaterom 1 sierpnia 1944 r." 
-                        class="w-full h-full object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
-                    >
+
+                <!-- GALERIA ZDJĘĆ -->
+                <div class="relative rounded-2xl overflow-hidden shadow-md h-96 group" id="gallery-container">
+                    <!-- Kontener slajdów -->
+                    <div class="w-full h-full relative">
+                        <!-- Zdjęcie 1 -->
+                        <img 
+                            src="IMG_2490.png" 
+                            alt="Strażacy Ochotniczej Straży Pożarnej Sulejów Podklasztorze oddający honor bohaterom 1 sierpnia 1944 r." 
+                            class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
+                        >
+                        <!-- Zdjęcie 2 (podmień ścieżkę src) -->
+                        <img 
+                            src="w_trakcie_operacji.jpg" 
+                            alt="Wóz bojowy, quad i motopompa będące na stanie wyposażenia OSP Podklasztorze podczas wyjazdu, na trawniku przed sklepem Dino w Sulejowie" 
+                            class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0"
+                        >
+                        <!-- Zdjęcie 3 (podmień ścieżkę src) -->
+                        <img 
+                            src="zbiornik_wodny_podklasztorze.jpg" 
+                            alt="Zbiornik wodny będący na stanie wyposażenia OSP Podklasztorze podczas ćwiczeń, w połączeniu ze zbiornikiem wodnym innej jednostki przeciwpożarowej" 
+                            class="gallery-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0"
+                        >
+                    </div>
+
+                    <!-- Przycisk Poprzednie -->
+                    <button id="prevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-fire-700 text-white p-3 rounded-full transition-colors opacity-0 group-hover:opacity-100 flex items-center justify-center">
+                        <i class="ph-bold ph-caret-left text-lg"></i>
+                    </button>
+
+                    <!-- Przycisk Następne -->
+                    <button id="nextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-fire-700 text-white p-3 rounded-full transition-colors opacity-0 group-hover:opacity-100 flex items-center justify-center">
+                        <i class="ph-bold ph-caret-right text-lg"></i>
+                    </button>
+
+                    <!-- Kropki nawigacyjne (Wskaźniki) -->
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2" id="dotsContainer">
+                        <button class="dot w-2.5 h-2.5 rounded-full bg-white transition-all"></button>
+                        <button class="dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all"></button>
+                        <button class="dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all"></button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -388,5 +423,87 @@
         </div>
     </footer>
 
+    <!-- SKRYPT DO OBSŁUGI GALERII -->
+    <script>
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const container = document.getElementById('gallery-container');
+        
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white', 'w-4');
+                } else {
+                    dot.classList.remove('bg-white', 'w-4');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            let next = (currentIndex + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            let prev = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
+
+        // Obsługa przycisków
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetTimer();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetTimer();
+        });
+
+        // Kliknięcie w kropki
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetTimer();
+            });
+        });
+
+        // Automatyczne przewijanie (co 5 sekund)
+        function startTimer() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetTimer() {
+            clearInterval(autoSlideInterval);
+            startTimer();
+        }
+
+        // Zatrzymaj przewijanie po najechaniu myszką
+        container.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        container.addEventListener('mouseleave', () => startTimer());
+
+        // Inicjalizacja
+        showSlide(0);
+        startTimer();
+    </script>
 </body>
 </html>
