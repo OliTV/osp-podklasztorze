@@ -224,94 +224,74 @@
 
         <!-- SEKCJA: OCHRONA LUDNOŚCI I OBRONA CYWILNA -->
         <section id="obrona-cywilna" class="scroll-mt-36">
-            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-10 space-y-8">
-                <div class="text-center max-w-2xl mx-auto space-y-2">
-                    <span class="text-fire-700 font-bold uppercase tracking-wider text-sm">Edukacja i Bezpieczeństwo</span>
-                    <h2 class="text-3xl font-extrabold text-gray-900">Ochrona Ludności i Sygnały Alarmowe</h2>
-                    <p class="text-gray-600 text-sm sm:text-base">
-                        Znajomość sygnałów alarmowych pozwala na szybką reakcję w sytuacji zagrożenia. Zobacz, jak je rozpoznać i co zrobić po ich usłyszeniu.
-                    </p>
-                </div>
-        
-                <!-- SYGNAŁY ALARMOWE -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- OGŁOSZENIE ALARMU -->
-                    <div class="bg-red-50 border border-red-200 rounded-xl p-6 flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-fire-700 text-white rounded-lg flex items-center justify-center text-xl font-bold">
-                                    <i class="ph-bold ph-warning"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-bold text-gray-900">Ogłoszenie Alarmu</h3>
-                                    <span class="text-xs font-semibold text-fire-700 uppercase">Sygnał dla ludności cywilnej</span>
-                                </div>
-                            </div>
-                            <ul class="text-sm text-gray-700 space-y-2">
-                                <li class="flex items-start gap-2">
-                                    <i class="ph-bold ph-speaker-high text-fire-700 mt-0.5"></i>
-                                    <span><strong>Sygnał akustyczny:</strong> Modulowany dźwięk syreny trwający <strong>3 minuty</strong>.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i class="ph-bold ph-broadcast text-fire-700 mt-0.5"></i>
-                                    <span><strong>Komunikat słowny:</strong> Trzykrotna zapowiedź „Uwaga! Uwaga! Uwaga! Ogłaszam alarm...”.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i class="ph-bold ph-caret-right text-fire-700 mt-0.5"></i>
-                                    <span><strong>Sygnał wizualny:</strong> Żółty trójkąt równoboczny skierowany podstawą do góry.</span>
-                                </li>
-                            </ul>
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-fire-700 font-bold uppercase tracking-wider text-sm">Edukacja i Bezpieczeństwo</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mt-1">Ochrona Ludności i Obrona Cywilna</h2>
+                <p class="text-gray-600 mt-2">Dowiedz się, jak reagować w sytuacjach zagrożenia oraz jak rozpoznać sygnały alarmowe.</p>
+            </div>
+
+            <!-- Karty informacyjne z sygnałami -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Ogłoszenie alarmu -->
+                <div class="bg-white rounded-xl p-6 border-l-4 border-fire-700 shadow-sm border-t border-r border-b border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-fire-700/10 text-fire-700 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Sygnał Alarmowy</span>
+                            <i class="ph-bold ph-warning-circle text-2xl text-fire-700"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ogłoszenie Alarmu</h3>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-2xl font-black text-fire-700">3 minuty</span>
+                            <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">— Sygnał Modulowany</span>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Ciągły, modulowany dźwięk syreny trwający 3 minuty. Oznacza powstanie bezpośredniego zagrożenia dla życia i zdrowia (np. skaźczenie, klęska żywiołowa, katastrofa).
+                        </p>
                     </div>
-        
-                    <!-- ODWOŁANIE ALARMU -->
-                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 flex flex-col justify-between space-y-4">
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-emerald-600 text-white rounded-lg flex items-center justify-center text-xl font-bold">
-                                    <i class="ph-bold ph-check-circle"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-bold text-gray-900">Odwołanie Alarmu</h3>
-                                    <span class="text-xs font-semibold text-emerald-700 uppercase">Koniec zagrożenia</span>
-                                </div>
-                            </div>
-                            <ul class="text-sm text-gray-700 space-y-2">
-                                <li class="flex items-start gap-2">
-                                    <i class="ph-bold ph-speaker-high text-emerald-600 mt-0.5"></i>
-                                    <span><strong>Sygnał akustyczny:</strong> Ciągły (jednostajny) dźwięk syreny trwający <strong>3 minuty</strong>.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i class="ph-bold ph-broadcast text-emerald-600 mt-0.5"></i>
-                                    <span><strong>Komunikat słowny:</strong> Trzykrotna zapowiedź „Uwaga! Uwaga! Uwaga! Odwołuję alarm...”.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <i class="ph-bold ph-x-circle text-emerald-600 mt-0.5"></i>
-                                    <span><strong>Sygnał wizualny:</strong> Usunięcie żółtego znaku trójkąta z przestrzeni publicznej.</span>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-gray-500 font-medium flex items-center gap-2">
+                        <i class="ph-bold ph-radio"></i> Włącz radio lub telewizję i słuchaj komunikatów.
                     </div>
                 </div>
-        
-                <!-- CO ZROBIĆ PO USŁYSZENIU ALARMU -->
-                <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                    <h4 class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <i class="ph-bold ph-info text-fire-700"></i> Co zrobić po usłyszeniu sygnału alarmowego?
-                    </h4>
-                    <div class="grid sm:grid-cols-3 gap-4 text-xs sm:text-sm text-gray-600">
-                        <div class="flex items-start gap-2">
-                            <span class="font-bold text-fire-700">1.</span>
-                            <p>Włącz radio lub telewizję lokalną i śledź komunikaty Regionalnego Systemu Ostrzegania (RSO) oraz Alert RCB.</p>
+
+                <!-- Odwołanie alarmu -->
+                <div class="bg-white rounded-xl p-6 border-l-4 border-emerald-600 shadow-sm border-t border-r border-b border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Koniec Alarmu</span>
+                            <i class="ph-bold ph-check-circle text-2xl text-emerald-600"></i>
                         </div>
-                        <div class="flex items-start gap-2">
-                            <span class="font-bold text-fire-700">2.</span>
-                            <p>Zamknij okna, drzwi i wyłącz urządzenia elektryczne oraz gazowe, jeśli nakazują to komunikaty.</p>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Odwołanie Alarmu</h3>
+                        <div class="flex items-baseline gap-2 mb-3">
+                            <span class="text-2xl font-black text-emerald-600">3 minuty</span>
+                            <span class="text-sm font-semibold text-gray-700 uppercase tracking-wide">— Sygnał Ciągły (Stały)</span>
                         </div>
-                        <div class="flex items-start gap-2">
-                            <span class="font-bold text-fire-700">3.</span>
-                            <p>Pomóż osobom starszym i niepełnosprawnym. Zachowaj spokój i nie powielaj niesprawdzonych informacji.</p>
-                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Ciągły, jednostajny dźwięk syreny trwający 3 minuty. Informuje o ustąpieniu niebezpieczeństwa i odwołaniu stanu zagrożenia na danym terenie.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-gray-500 font-medium flex items-center gap-2">
+                        <i class="ph-bold ph-shield-check"></i> Postępuj zgodnie z dalszymi zaleceniami służb.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zasady postępowania po usłyszeniu alarmu -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-sm">
+                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <i class="ph-bold ph-info text-fire-700 text-xl"></i> Co zrobić po usłyszeniu sygnału alarmowego?
+                </h3>
+                <div class="grid sm:grid-cols-3 gap-6 text-sm text-gray-600">
+                    <div class="space-y-1">
+                        <span class="font-bold text-gray-900 block">1. Zachowaj spokój</span>
+                        <p>Szybko udaj się do bezpiecznego miejsca lub budynku. Unikaj paniki i pomóż osobom potrzebującym.</p>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="font-bold text-gray-900 block">2. Zamknij okna i drzwi</span>
+                        <p>Jeśli to możliwe, wyłącz instalację gazową, elektryczną i odetnij dopływ powietrza z zewnątrz.</p>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="font-bold text-gray-900 block">3. Śledź komunikaty</span>
+                        <p>Włącz lokalne radio, TV lub sprawdzaj oficjalne komunikaty służb ratowniczych i władz.</p>
                     </div>
                 </div>
             </div>
