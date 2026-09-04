@@ -68,35 +68,161 @@
 
         <!-- MENU GŁÓWNE -->
         <nav class="bg-white border-b border-gray-200">
-            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-                <a href="#" class="flex items-center gap-3 group">
-                    <img src="logo_1_1.png" alt="Herb OSP Podklasztorze" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
-                    <div>
-                        <span class="block text-xl font-black tracking-tight text-gray-900 group-hover:text-fire-700 transition-colors">OSP Podklasztorze</span>
-                        <span class="block text-xs text-gray-500 font-medium">Ochotnicza Straż Pożarna Sulejów Podklasztorze</span>
+            <div class="max-w-6xl mx-auto px-4 py-3">
+
+                <div class="flex justify-between items-center gap-4">
+
+                    <a href="#" class="flex items-center gap-3 group min-w-0">
+                        <img src="logo_1_1.png"
+                             alt="Herb OSP Podklasztorze"
+                             class="h-12 w-auto object-contain transition-transform group-hover:scale-105 flex-shrink-0">
+
+                        <div class="min-w-0">
+                            <span class="block text-lg sm:text-xl font-black tracking-tight text-gray-900 group-hover:text-fire-700 transition-colors truncate">
+                                OSP Podklasztorze
+                            </span>
+                            <span class="hidden sm:block text-xs text-gray-500 font-medium">
+                                Ochotnicza Straż Pożarna Sulejów Podklasztorze
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- MENU DESKTOP -->
+                    <div class="hidden lg:flex items-center font-semibold text-sm text-gray-700 ml-auto">
+
+                        <!-- Linki tworzące flow strony -->
+                        <div class="flex items-center gap-5">
+                            <a href="#o-nas" class="hover:text-fire-700 transition-colors">O nas</a>
+                            <a href="#wyposazenie" class="hover:text-fire-700 transition-colors">Wyposażenie</a>
+                            <a href="#obrona-cywilna" class="hover:text-fire-700 transition-colors">OLiOC</a>
+                            <a href="#wladze" class="hover:text-fire-700 transition-colors">Władze</a>
+
+                            <a href="#wspieraj"
+                               class="bg-fire-700 text-white px-4 py-2 rounded-lg hover:bg-fire-800 transition-colors flex items-center gap-2">
+                                <i class="ph-bold ph-heart"></i>
+                                Wspieraj nas
+                            </a>
+                        </div>
+
+                        <!-- Terminal jako osobna funkcja, maksymalnie po prawej -->
+                        <div class="ml-5 pl-5 border-l border-gray-200">
+                            <a href="https://osp-podklasztorze-terminal.web.app/"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="border border-gray-300 bg-white text-gray-800 px-4 py-2 rounded-lg hover:border-fire-700 hover:text-fire-700 hover:bg-gray-50 transition-colors flex items-center gap-2 whitespace-nowrap">
+                                <i class="ph-bold ph-monitor"></i>
+                                Terminal
+                            </a>
+                        </div>
+
                     </div>
-                </a>
-                
-                <div class="hidden md:flex items-center gap-6 font-semibold text-sm text-gray-700">
-                    <a href="#o-nas" class="hover:text-fire-700 transition-colors">O nas</a>
-                    <a href="#wyposazenie" class="hover:text-fire-700 transition-colors">Wyposażenie</a>
-                    <a href="#obrona-cywilna" class="hover:text-fire-700 transition-colors">OLiOC</a>
-                    <a href="#wladze" class="hover:text-fire-700 transition-colors">Władze</a>
 
-                    <a href="https://osp-podklasztorze-terminal.web.app/"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="border border-gray-300 bg-white text-gray-800 px-4 py-2 rounded-lg hover:border-fire-700 hover:text-fire-700 hover:bg-gray-50 transition-colors flex items-center gap-2">
-                        <i class="ph-bold ph-monitor"></i> Terminal
-                    </a>
+                    <!-- PRZYCISK MENU MOBILE / TABLET -->
+                    <button id="mobileMenuButton"
+                            type="button"
+                            aria-label="Otwórz menu"
+                            aria-expanded="false"
+                            class="lg:hidden flex-shrink-0 w-11 h-11 rounded-lg border border-gray-200 text-gray-800 hover:text-fire-700 hover:border-fire-700 transition-colors flex items-center justify-center">
+                        <i id="mobileMenuIcon" class="ph-bold ph-list text-2xl"></i>
+                    </button>
 
-                    <a href="#wspieraj" class="bg-fire-700 text-white px-4 py-2 rounded-lg hover:bg-fire-800 transition-colors flex items-center gap-2">
-                        <i class="ph-bold ph-heart"></i> Wspieraj nas
-                    </a>
                 </div>
+
+                <!-- MENU MOBILE / TABLET jest renderowane jako drawer poza nav -->
+
             </div>
         </nav>
     </header>
+
+    <!-- TŁO POD MENU MOBILE -->
+    <div id="mobileMenuBackdrop"
+         class="fixed inset-0 z-[60] bg-black/35 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+         aria-hidden="true"></div>
+
+    <!-- WYSUWANE MENU MOBILE / TABLET -->
+    <aside id="mobileMenu"
+           class="fixed top-0 right-0 z-[70] h-dvh w-80 max-w-[85vw] bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-out lg:hidden"
+           aria-hidden="true">
+
+        <div class="h-full flex flex-col">
+
+            <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
+                <div>
+                    <div class="text-xs font-bold uppercase tracking-wider text-fire-700">
+                        OSP Podklasztorze
+                    </div>
+                    <div class="text-lg font-extrabold text-gray-900">
+                        Menu
+                    </div>
+                </div>
+
+                <button id="mobileMenuClose"
+                        type="button"
+                        aria-label="Zamknij menu"
+                        class="w-10 h-10 rounded-lg border border-gray-200 text-gray-700 hover:text-fire-700 hover:border-fire-700 transition-colors flex items-center justify-center">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto px-4 py-4">
+                <div class="flex flex-col font-semibold text-sm text-gray-700 gap-1">
+
+                    <a href="#o-nas"
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                        <i class="ph-bold ph-info"></i>
+                        O nas
+                    </a>
+
+                    <a href="#wyposazenie"
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                        <i class="ph-bold ph-fire-truck"></i>
+                        Wyposażenie
+                    </a>
+
+                    <a href="#obrona-cywilna"
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                        <i class="ph-bold ph-shield-warning"></i>
+                        OLiOC
+                    </a>
+
+                    <a href="#wladze"
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                        <i class="ph-bold ph-users-three"></i>
+                        Władze
+                    </a>
+
+                    <a href="#wspieraj"
+                       class="mobile-nav-link mt-2 bg-fire-700 text-white px-4 py-3 rounded-lg hover:bg-fire-800 transition-colors flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-heart"></i>
+                        Wspieraj nas
+                    </a>
+
+                    <div class="mt-5 pt-5 border-t border-gray-200">
+                        <div class="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-1 mb-2">
+                            Dla członków OSP
+                        </div>
+
+                        <a href="https://osp-podklasztorze-terminal.web.app/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="flex items-center justify-between gap-3 border border-gray-300 bg-white text-gray-800 px-4 py-3 rounded-lg hover:border-fire-700 hover:text-fire-700 hover:bg-gray-50 transition-colors">
+                            <span class="flex items-center gap-3">
+                                <i class="ph-bold ph-monitor"></i>
+                                Terminal
+                            </span>
+                            <i class="ph-bold ph-arrow-square-out text-base"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+
+            <div class="px-5 py-4 border-t border-gray-200 text-xs text-gray-400">
+                Ochotnicza Straż Pożarna Sulejów Podklasztorze
+            </div>
+
+        </div>
+    </aside>
 
     <!-- BANER GŁÓWNY (HERO) -->
     <section class="relative bg-gray-900 text-white py-20 px-4 overflow-hidden">
@@ -509,6 +635,60 @@
             <p>Wykonano z &hearts; przez druha Oliwiera Stefaniaka</p>
         </div>
     </footer>
+
+    <!-- SKRYPT MENU MOBILE -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function setMobileMenu(open) {
+            mobileMenu.classList.toggle('translate-x-full', !open);
+            mobileMenuBackdrop.classList.toggle('opacity-0', !open);
+            mobileMenuBackdrop.classList.toggle('pointer-events-none', !open);
+
+            mobileMenuButton.setAttribute('aria-expanded', String(open));
+            mobileMenu.setAttribute('aria-hidden', String(!open));
+            mobileMenuBackdrop.setAttribute('aria-hidden', String(!open));
+
+            document.body.classList.toggle('overflow-hidden', open);
+        }
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isOpen =
+                mobileMenuButton.getAttribute('aria-expanded') === 'true';
+
+            setMobileMenu(!isOpen);
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            setMobileMenu(false);
+        });
+
+        mobileMenuBackdrop.addEventListener('click', () => {
+            setMobileMenu(false);
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                setMobileMenu(false);
+            });
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                setMobileMenu(false);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                setMobileMenu(false);
+            }
+        });
+    </script>
 
     <!-- SKRYPT DO OBSŁUGI GALERII -->
     <script>
