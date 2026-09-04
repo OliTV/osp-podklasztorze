@@ -141,25 +141,28 @@
 
     <!-- WYSUWANE MENU MOBILE / TABLET -->
     <aside id="mobileMenu"
-           class="fixed top-0 right-0 z-[70] h-dvh w-80 max-w-[85vw] bg-white shadow-2xl translate-x-full transition-transform duration-300 ease-out lg:hidden"
+           class="fixed top-0 right-0 z-[70] h-dvh w-80 max-w-[85vw] bg-gray-50 shadow-2xl translate-x-full transition-transform duration-300 ease-out lg:hidden"
            aria-hidden="true">
 
         <div class="h-full flex flex-col">
 
-            <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between">
+            <div class="px-5 py-5 bg-gradient-to-br from-fire-700 to-fire-900 text-white flex items-center justify-between shadow-sm">
                 <div>
-                    <div class="text-xs font-bold uppercase tracking-wider text-fire-700">
+                    <div class="text-xs font-bold uppercase tracking-wider text-white/70">
                         OSP Podklasztorze
                     </div>
-                    <div class="text-lg font-extrabold text-gray-900">
+
+                    <div class="text-lg font-extrabold">
                         Menu
                     </div>
                 </div>
 
-                <button id="mobileMenuClose"
-                        type="button"
-                        aria-label="Zamknij menu"
-                        class="w-10 h-10 rounded-lg border border-gray-200 text-gray-700 hover:text-fire-700 hover:border-fire-700 transition-colors flex items-center justify-center">
+                <button
+                    id="mobileMenuClose"
+                    type="button"
+                    aria-label="Zamknij menu"
+                    class="w-10 h-10 flex-shrink-0 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors flex items-center justify-center"
+                >
                     <i class="ph-bold ph-x text-xl"></i>
                 </button>
             </div>
@@ -168,25 +171,25 @@
                 <div class="flex flex-col font-semibold text-sm text-gray-700 gap-1">
 
                     <a href="#o-nas"
-                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white hover:text-fire-700 hover:shadow-sm transition-all">
                         <i class="ph-bold ph-info"></i>
                         O nas
                     </a>
 
                     <a href="#wyposazenie"
-                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white hover:text-fire-700 hover:shadow-sm transition-all">
                         <i class="ph-bold ph-fire-truck"></i>
                         Wyposażenie
                     </a>
 
                     <a href="#obrona-cywilna"
-                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white hover:text-fire-700 hover:shadow-sm transition-all">
                         <i class="ph-bold ph-shield-warning"></i>
                         OLiOC
                     </a>
 
                     <a href="#wladze"
-                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-gray-100 hover:text-fire-700 transition-colors">
+                       class="mobile-nav-link flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white hover:text-fire-700 hover:shadow-sm transition-all">
                         <i class="ph-bold ph-users-three"></i>
                         Władze
                     </a>
@@ -772,43 +775,44 @@
         showSlide(0);
         startTimer();
     </script>
+    <!-- KOTWICE: PRZEWIJANIE BEZ ZOSTAWIANIA #SEKCJA W URL -->
     <script>
-      document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(link => {
-        link.addEventListener('click', event => {
-          const id = link.getAttribute('href');
-          const target = document.querySelector(id);
-    
-          if (!target) return;
-    
-          event.preventDefault();
-    
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-    
-          history.replaceState(
-            null,
-            '',
-            window.location.pathname + window.location.search
-          );
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(link => {
+            link.addEventListener('click', event => {
+                const id = link.getAttribute('href');
+                const target = document.querySelector(id);
+
+                if (!target) return;
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                history.replaceState(
+                    null,
+                    '',
+                    window.location.pathname + window.location.search
+                );
+            });
         });
-      });
-    
-      // Jeśli ktoś wszedł bezpośrednio przez np. /#wspieraj,
-      // pozwól przeglądarce przewinąć do sekcji,
-      // ale potem usuń #wspieraj z adresu.
-      window.addEventListener('load', () => {
-        if (window.location.hash) {
-          setTimeout(() => {
-            history.replaceState(
-              null,
-              '',
-              window.location.pathname + window.location.search
-            );
-          }, 100);
-        }
-      });
+
+        // Bezpośredni link typu /#wspieraj nadal przewinie do sekcji,
+        // ale po załadowaniu strony kotwica znika z paska adresu.
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                setTimeout(() => {
+                    history.replaceState(
+                        null,
+                        '',
+                        window.location.pathname + window.location.search
+                    );
+                }, 100);
+            }
+        });
     </script>
+
 </body>
 </html>
